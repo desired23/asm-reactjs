@@ -44,7 +44,7 @@ export const create = async (req, res) => {
 
 export const remove = async (req, res) => {
   try {
-    const product = await Product.delete(req.params.id);
+    const product = await Product.findByIdAndDelete(req.params.id);
     return res.status(200).json({
       message: "Sản phẩm đã được xóa thành công",
       data: product,

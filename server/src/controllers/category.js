@@ -1,4 +1,5 @@
 import Category from "../models/category";
+import { categorySchema } from "../schemas/category";
 
 export const getAll = async (req, res) => {
   try {
@@ -46,7 +47,7 @@ export const create = async (req, res) => {
 
 export const remove = async (req, res) => {
   try {
-    const category = await Category.delete(req.params.id);
+    const category = await Category.findByIdAndDelete(req.params.id);
     return res.status(200).json({
       message: "Category đã được xóa thành công",
       data: category,

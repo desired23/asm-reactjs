@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import Product from "./product";
 const { Schema } = mongoose;
 
 const categorySchema = new Schema(
@@ -8,6 +9,15 @@ const categorySchema = new Schema(
       require: true,
       minLength: 3,
     },
+    description: {
+      type: String
+    },
+    products: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: Product,
+      },
+    ],
   },
   {
     timestamps: true,
