@@ -16,9 +16,10 @@ import { useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 import {useEffect} from 'react'
 import { IRootState } from './store';
-import { deleteProductAction, getProductListAction } from './store/product/actions';
+import { addProductAction, deleteProductAction, getProductListAction, updateProductAction } from './store/product/actions';
 import { IProduct } from './interfaces/product';
-import { GetListCategoryAction, getCategoryListAction } from './store/category/actions';
+import { GetListCategoryAction, addCategoryAction, deleteCategoryAction, getCategoryListAction, updateCategoryAction } from './store/category/actions';
+import { ICategory } from './interfaces/category';
 function App() {
   const dispatch:Dispatch<any> = useDispatch()
   const productState = useSelector((state:IRootState)=>state.product)
@@ -35,6 +36,21 @@ console.log( categoryState.categories);
 const del = (id: string) =>{
   dispatch(deleteProductAction(id))
 }
+const onUpdate = (product:IProduct)=>{
+  dispatch(updateProductAction(product))
+}
+const onAdd = (product:IProduct)=>{
+  dispatch(addProductAction(product))
+}
+const onUpdateCategory = (category:ICategory)=>{
+  dispatch(updateCategoryAction(category))
+}
+const onAddCate = (category:ICategory)=>{
+  dispatch(addCategoryAction(category))
+}
+const onRemoveCate =  (id: string)=>{
+  dispatch(deleteCategoryAction(id))
+}
   return (
     <div className="App">
     <Routes>
@@ -46,13 +62,13 @@ const del = (id: string) =>{
         <Route index element={<DashBoard />} />
         <Route path='products'>
           <Route index element={<ProductManagementPage categories={categoryState.categories} onHandleRemove={del} products={productState.products} />} />
-          <Route path='add' element={<AddProductPage/>} />
-          <Route path=':id/update' element={<UpdateProductPage categories={categoryState.categories} onUpdate={()=>{}} products={productState.products}/>} />
+          <Route path='add' element={<AddProductPage onAdd={onAdd} categories={categoryState.categories}/>} />
+          <Route path=':id/update' element={<UpdateProductPage onUpdate={onUpdate} categories={categoryState.categories} products={productState.products}/>} />
         </Route>
         <Route path='categories'>
-          <Route index element={<CategoryManagementPage/>} />
-          <Route path='add' element={<AddCategoryPage  />} />
-          <Route path=':id/update' element={<UpdateCategoryPage  />} />
+          <Route index element={<CategoryManagementPage onHandleRemoveCate={onRemoveCate}  categories={categoryState.categories}/>} />
+          <Route path='add' element={<AddCategoryPage onAddCate={onAddCate} />} />
+          <Route path=':id/update' element={<UpdateCategoryPage onUpdateCate={onUpdateCategory}  categories={categoryState.categories}/>} />
         </Route>
         <Route path='info'>
         </Route>

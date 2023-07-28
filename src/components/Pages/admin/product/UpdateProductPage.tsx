@@ -44,15 +44,12 @@ const UpdateProductPage = (props: IProps) => {
     })
   }
   const onFinish = (values: any) => {
-
-
-
     props.onUpdate({
       ...values,
     });
 
 
-    navigate('/admin/categories');
+    navigate('/admin/products');
   };
   return (
     <div>
