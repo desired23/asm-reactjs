@@ -1,7 +1,7 @@
 import Joi from "joi";
 
 export const signupSchema = Joi.object({
-  name: Joi.string().required().messages({
+  username: Joi.string().required().messages({
     "string.empty": 'Trường "tên" không được để trống',
     "any.required": 'Trường "tên" là bắt buộc',
   }),

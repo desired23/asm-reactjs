@@ -28,11 +28,9 @@ export type DeleteCategoryAction = {
 export const getCategoryListAction = () => {
     return async (dispatch: GetListDipatchType) => {
       try {
-        const response = await getAllCategory(); // Sử dụng await để chờ kết quả trả về từ getAllProduct()
-        const data:ICategory[] = response.data; // Gán giá trị từ kết quả trả về vào biến data
+        const response = await getAllCategory(); 
+        const data:ICategory[] = response.data; 
   
-        // Kiểm tra kiểu dữ liệu của data, nên là một mảng (array) hoặc object
-        console.log(data);
         dispatch({
           type: "get-list",
           payload: {

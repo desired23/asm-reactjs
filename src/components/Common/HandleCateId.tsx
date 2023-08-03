@@ -4,8 +4,6 @@ interface IPropsHandleCateId {
   cates: ICategory[];
 }
 const HandleCateId = (props: IPropsHandleCateId) => {
-  console.log(props.categories);
-  console.log(props.cates);
   const cateNames: string[] = [];
   props.cates.forEach((categoryId) => {
     const category = props.categories.find((cate) => String(cate._id) === String(categoryId));
@@ -13,7 +11,6 @@ const HandleCateId = (props: IPropsHandleCateId) => {
       cateNames.push(category.name);
     }
   })
-  console.log(cateNames);
 if (cateNames.length > 0) {
   return (
     <div>

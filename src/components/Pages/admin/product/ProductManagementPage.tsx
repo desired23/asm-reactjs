@@ -6,6 +6,7 @@ import { IProduct } from '../../../../interfaces/product';
 // import ImageList from '../../../Common/product';
 import { ICategory } from '../../../../interfaces/category';
 import HandleCateId from '../../../Common/HandleCateId';
+import ImageList from '../../../Common/ProductImage';
 
 interface DataType {
     key: string | number;
@@ -23,7 +24,6 @@ interface IProps {
 }
 const ProductManagementPage = (props: IProps) => {
     const removeProduct = (_id: string) => props.onHandleRemove(_id)
-console.log(props.categories);
     const columns: ColumnsType<DataType> = [
         {
             title: 'Product Name',
@@ -42,12 +42,12 @@ console.log(props.categories);
             key: 'description',
         },
 
-        // {
-        //     title: 'Product Image',
-        //     dataIndex: 'images',
-        //     key: 'image',
-        //     render: (text) => <ImageList images={text || [""]} />
-        // },
+        {
+            title: 'Product Image',
+            dataIndex: 'images',
+            key: 'image',
+            render: (text) => <ImageList images={text || [""]} />
+        },
         {
             title: 'Product Category',
             dataIndex: 'categoryId',

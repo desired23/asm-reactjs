@@ -18,8 +18,10 @@ import {useEffect} from 'react'
 import { IRootState } from './store';
 import { addProductAction, deleteProductAction, getProductListAction, updateProductAction } from './store/product/actions';
 import { IProduct } from './interfaces/product';
-import { GetListCategoryAction, addCategoryAction, deleteCategoryAction, getCategoryListAction, updateCategoryAction } from './store/category/actions';
+import {  addCategoryAction, deleteCategoryAction, getCategoryListAction, updateCategoryAction } from './store/category/actions';
 import { ICategory } from './interfaces/category';
+import Login from './components/Pages/Login';
+import Register from './components/Pages/Register';
 function App() {
   const dispatch:Dispatch<any> = useDispatch()
   const productState = useSelector((state:IRootState)=>state.product)
@@ -30,8 +32,8 @@ function App() {
   },[dispatch])
 
 
-console.log( productState.products);
-console.log( categoryState.categories);
+// console.log( productState.products);
+// console.log( categoryState.categories);
 
 const del = (id: string) =>{
   dispatch(deleteProductAction(id))
@@ -73,6 +75,9 @@ const onRemoveCate =  (id: string)=>{
         <Route path='info'>
         </Route>
       </Route>
+      <Route path='login' element={<Login/>}/>
+      <Route path='register' element={<Register/>}/>
+
     </Routes>
 </div>
   );

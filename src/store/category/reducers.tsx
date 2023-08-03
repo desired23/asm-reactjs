@@ -20,7 +20,6 @@ type ICombineAction = GetListCategoryAction | AddCategoryAction | UpdateCategory
  const categoryReducer = (state: ICategoryState = initCategoryState, action: ICombineAction): ICategoryState => {
     switch (action.type) {
         case 'get-list':
-            console.log("hehe");
             state = {
                 ...state,
                 categories: action.payload.categories,
@@ -47,7 +46,6 @@ type ICombineAction = GetListCategoryAction | AddCategoryAction | UpdateCategory
             break;
 
         default:
-            console.log("ga");
             return state    
     }
     return state
