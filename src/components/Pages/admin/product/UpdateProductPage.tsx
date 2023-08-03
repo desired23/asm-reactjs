@@ -87,6 +87,7 @@ const UpdateProductPage = (props: IProps) => {
     return e?.fileList;
   };
   const handleUpload = async (ev: any) => {
+    setIsUploading(true);
     console.log('Upload event:', ev);
     const e = await normFile(ev)
     console.log("e", e);
@@ -115,7 +116,7 @@ const UpdateProductPage = (props: IProps) => {
         urls.push(response.data.secure_url);
       } else urls.push(file?.url)
     }
-
+    setIsUploading(false);
     setUrls(urls)
   };
   return (
@@ -185,7 +186,7 @@ const UpdateProductPage = (props: IProps) => {
 
         </Form.Item>
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button type="primary" htmlType="submit" >
+          <Button type="primary" htmlType="submit" disabled={isUploading} >
             Submit
           </Button>
         </Form.Item>
