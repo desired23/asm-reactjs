@@ -7,3 +7,4 @@ export const productSchema = Joi.object({
   images: Joi.array().items(Joi.string()),
   categoryId: Joi.array().items(Joi.string()).required(),
 });
+``

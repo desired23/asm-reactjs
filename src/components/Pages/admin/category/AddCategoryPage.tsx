@@ -1,5 +1,5 @@
 
-import { useNavigate  } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import {
   Button,
   Form,
@@ -16,7 +16,7 @@ const AddCategoryPage = (props: IProps) => {
   const navigate = useNavigate()
 
 
- 
+
   const onFinish = (values: any) => {
     props.onAddCate({
       ...values,
@@ -44,13 +44,6 @@ const AddCategoryPage = (props: IProps) => {
         >
           <Input />
         </Form.Item>
-        <Form.Item
-          label="Category price"
-          name="price"
-          rules={[{ required: true, message: 'Please input your Category name!' }]}
-        >
-          <Input />
-        </Form.Item>
 
 
         <Form.Item
@@ -65,7 +58,7 @@ const AddCategoryPage = (props: IProps) => {
             Submit
           </Button>
         </Form.Item>
-      </Form> 
+      </Form>
     </div>
   )
 }
